@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 
 import { Container } from './styles';
 
-export default function Slider(props) {
+export default function Slider({ color, handleColorUpdate, hexColor }) {
   const [value, setValue] = useState(0);
 
   function onChangeHandler(e) {
-    setValue(e.target.value);
+    const { value } = e.target;
+    handleColorUpdate(hexColor, value);
+    setValue(value);
   }
 
   return (
-    <Container color={props.color} opacity={value > 10 ? value / 255 : 0.1}>
+    <Container color={color} opacity={value > 10 ? value / 255 : 0.1}>
       <input
         className="slider"
         onChange={onChangeHandler}
