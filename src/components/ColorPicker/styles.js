@@ -19,4 +19,17 @@ export const Container = styled.div`
       outline: none;
     }
   }
+
+  h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  button {
+    padding: 0;
+    border: 0;
+
+    &:focus {
+      outline: none;
+    }
+  }
 `;

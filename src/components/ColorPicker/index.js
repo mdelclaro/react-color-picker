@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import copy from 'copy-to-clipboard';
 
 import { Container } from './styles';
 
@@ -27,10 +28,22 @@ export default function ColorPicker() {
     }
   }
 
+  function handleCopyToClipboard() {
+    copy('#' + stateColor);
+    setShowCopyText(true);
+    setTimeout(() => setShowCopyText(false), 1000);
+  }
+
   return (
     <Container color={stateColor}>
       <h1>Color Picker</h1>
-      <input type="text" value={`#${stateColor}`} disabled="disabled" />
+      <button onClick={handleCopyToClipboard}>
+        <input
+          type="text"
+          value={showCopyText ? 'Copied!' : `#${stateColor}`}
+          disabled="disabled"
+        />
+      </button>
       <Slider
         color="#ff4136"
         hexColor="red"
